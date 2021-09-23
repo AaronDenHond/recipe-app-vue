@@ -1,5 +1,5 @@
 <template>
-   <!-- submit.prevent wont reload the page -->
+  <!-- submit.prevent wont reload the page -->
   <form @submit.prevent="addRecipe">
     <div>
       <label>Name</label><br />
@@ -30,12 +30,13 @@
   </form>
   <!-- v-for is vues way of foreach loping -->
   <div v-for="recipe of recipes" v-bind:key="recipe.id">
-    <p>{{recipe.name}}</p>
-    <p>{{recipe.ingredients}}</p>
-    <p>{{recipe.instructions}}</p>
-    
-   
-
+    <h1>Name</h1>
+    <p>{{ recipe.name }}</p>
+    <h1>Ingredients</h1>
+    <p>{{ recipe.ingredients }}</p>
+    <h1>Instructions</h1>
+    <p>{{ recipe.instructions }}</p>
+    <button @click="deleteRecipe">Delete Recipe</button>
   </div>
 </template>
 
@@ -55,14 +56,13 @@ export default {
   methods: {
     addRecipe() {
       this.recipes.push(this.recipe);
-      console.log(this.recipes)
-      
+      console.log(this.recipes);
     },
-    
+    deleteRecipe(start){
+      this.recipes.splice(start,1)
+    }
   },
-  
 };
-
 </script>
 
 <style>
